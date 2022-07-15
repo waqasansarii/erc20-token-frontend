@@ -29,19 +29,30 @@ function App() {
   const handleClose = () => setOpen(false)
   const [account, setAccount] = useState(null)
 
+  const isMobileDevice = () => {
+    return 'ontouchstart' in window || 'onmsgesturechange' in window
+  }
+
   const handleConnectMetaMask = async () => {
     let { ethereum } = window
     console.log(ethereum)
-    if (ethereum && ethereum.isMetaMask) {
-      if (ethereum.chainId === '0x4') {
-        let accounts = await ethereum.request({ method: 'eth_requestAccounts' })
-        console.log(accounts)
-        setAccount(accounts[0])
-        setOpen(false)
+    if (!isMobileDevice()) {
+      alert('Desktop')
+      if (ethereum && ethereum.isMetaMask) {
+        if (ethereum.chainId === '0x4') {
+
+          let accounts = await ethereum.request({ method: 'eth_requestAccounts' })
+          console.log(accounts)
+          setAccount(accounts[0])
+          setOpen(false)
+        }
+        else {
+          alert('Please Switch your Network to Rinkeby testnet')
+        }
       }
-      else{
-        alert('Please Switch your Network to Rinkeby testnet')
-      }
+    }
+    else{
+      alert('Mobile')
     }
   }
 
