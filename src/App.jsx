@@ -30,8 +30,7 @@ function App() {
   const [account, setAccount] = useState(null)
 
   const isMobileDevice = () => {
-    // return 'ontouchstart' in window || 'onmsgesturechange' in window
-    return true
+    return 'ontouchstart' in window || 'onmsgesturechange' in window
   }
 
   const handleConnectMetaMask = async () => {
