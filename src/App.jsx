@@ -40,23 +40,35 @@ function App() {
       alert('Desktop')
       if (ethereum && ethereum.isMetaMask) {
         if (ethereum.chainId === '0x4') {
-
-          let accounts = await ethereum.request({ method: 'eth_requestAccounts' })
+          let accounts = await ethereum.request({
+            method: 'eth_requestAccounts',
+          })
           console.log(accounts)
           setAccount(accounts[0])
           setOpen(false)
-        }
-        else {
+        } else {
           alert('Please Switch your Network to Rinkeby testnet')
         }
       }
-    }
-    else{
+    } else {
       alert('Mobile')
+      const dappUrl =
+        'https://metamask.app.link/dapp/buyerc20-token.netlify.app/'
+     await window.open(dappUrl)
+      let accounts = await ethereum.request({ method: 'eth_requestAccounts' })
+      console.log(accounts)
+      setAccount(accounts[0])
+      // return (
+      //   <a href={dappUrl}>
+      //      <button >
+      //        Connect to MetaMask
+      //      </button>
+      //   </a>
+      // );
     }
   }
 
-  // detect when chain changed 
+  // detect when chain changed
   // window.ethereum.on('chainChanged', handleChainChanged)
   // function handleChainChanged(_chainId) {
   //   // We recommend reloading the page, unless you must do otherwise
