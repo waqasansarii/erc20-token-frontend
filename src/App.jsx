@@ -24,7 +24,7 @@ const style = {
 }
 
 function App() {
-  const [open, setOpen] = React.useState(false)
+  const [open, setOpen] = useState(false)
   const handleOpen = () => setOpen(true)
   const handleClose = () => setOpen(false)
   const [account, setAccount] = useState(null)
@@ -58,11 +58,11 @@ function App() {
   }
 
   // detect when chain changed 
-  window.ethereum.on('chainChanged', handleChainChanged)
-  function handleChainChanged(_chainId) {
-    // We recommend reloading the page, unless you must do otherwise
-    window.location.reload()
-  }
+  // window.ethereum.on('chainChanged', handleChainChanged)
+  // function handleChainChanged(_chainId) {
+  //   // We recommend reloading the page, unless you must do otherwise
+  //   window.location.reload()
+  // }
 
   return (
     // <div className="App">
