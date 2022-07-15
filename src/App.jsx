@@ -54,7 +54,8 @@ function App() {
       alert('Mobile')
       const dappUrl =
         'https://metamask.app.link/dapp/buyerc20-token.netlify.app/'
-     await window.open(dappUrl)
+      window.location.href = dappUrl
+     alert('app open')
       let accounts = await ethereum.request({ method: 'eth_requestAccounts' })
       console.log(accounts)
       setAccount(accounts[0])
